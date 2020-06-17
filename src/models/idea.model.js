@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const mongooseAutopopulate = require('mongoose-autopopulate');
 
 const IdeaSchema = new Schema({
     idea: {
@@ -32,6 +31,6 @@ const IdeaSchema = new Schema({
     }]
 });
 
-IdeaSchema.plugin(mongooseAutopopulate());
+IdeaSchema.plugin(require('mongoose-autopopulate'));
 
 module.exports = model('idea', IdeaSchema);

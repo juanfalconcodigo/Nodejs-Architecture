@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const mongooseAutopopulate = require('mongoose-autopopulate');
 
 const CommentSchema = new Schema({
     comment: {
@@ -18,6 +17,6 @@ const CommentSchema = new Schema({
     }
 });
 
-CommentSchema.plugin(mongooseAutopopulate());
+CommentSchema.plugin(require('mongoose-autopopulate'));
 
 module.exports = model('comment', CommentSchema);
