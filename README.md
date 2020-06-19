@@ -29,5 +29,7 @@ npm start
 PORT=<número-puerto>
 MONGO_URI=mongodb://localhost:27017/<base-de-datos>
 APPLICATION_NAME=<nombre-aplicación>
+JWT_SECRET=<palabra-clave>
+EXPIRES_IN=<tiempo-expiración>
 ```
 > Juan Diego Falcón Córdova ( ***Web Developer*** - :computer::man: )
