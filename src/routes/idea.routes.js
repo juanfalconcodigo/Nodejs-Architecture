@@ -1,8 +1,9 @@
 const { Router } = require('express');
+const { ParseIntMiddleware } = require('../middlewares');
 
 module.exports = function({ IdeaController }) {
     const router = Router();
-    router.route("/").get(IdeaController.getAll);
+    router.route("/").get(ParseIntMiddleware, IdeaController.getAll);
     router.route("/:ideaId").get(IdeaController.get);
     router.route("/:ideaId/all").get(IdeaController.getUserIdeas);
     router.route("/").post(IdeaController.create);

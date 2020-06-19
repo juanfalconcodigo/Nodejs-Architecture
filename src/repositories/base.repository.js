@@ -8,8 +8,9 @@ class BaseRepository {
         return await this.model.findById(id);
     }
 
-    async getAll() {
-        return await this.model.find({});
+    async getAll(skip = 1, limit = 5) {
+        const start = limit * (skip - 1);
+        return await this.model.find({}).skip(start).limit(limit);
     }
 
     async create(entity) {

@@ -13,7 +13,8 @@ class UserController {
     }
 
     async getAll(req, res) {
-        const users = await _userService.getAll();
+        const { skip, limit } = req.query;
+        const users = await _userService.getAll(skip, limit);
         return res.send(users);
     }
 

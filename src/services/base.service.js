@@ -22,8 +22,8 @@ class BaseService {
         return currentEntity;
     }
 
-    async getAll() {
-        return await this.repository.getAll();
+    async getAll(skip, limit) {
+        return await this.repository.getAll(skip, limit);
     }
 
     async create(entity) {
