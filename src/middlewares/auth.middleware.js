@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
             error.message = "El token ingresado es inválido";
             throw error;
         }
-        req.user = decoded.token;
+        req.user = decoded.user;
         next();
     });
 
