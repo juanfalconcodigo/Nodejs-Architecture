@@ -1,0 +1,177 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Backend ::ShareYourIdea:: App",
+        "version": "1.0.0",
+        "title": "Swagger ShareYourIdea",
+        "contact": {
+            "email": "juancodigo23@gmail.com"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3001",
+    "basePath": "/v1/api",
+    "tags": [{
+        "name": "User",
+        "description": "Everything about users"
+    }],
+    "schemes": ["http", "https"],
+    "paths": {
+        "/user": {
+            "get": {
+                "tags": ["User"],
+                "summary": "Finds All the Users",
+                "description": "",
+                "produces": ["application/json"],
+                "parameters": [{
+                        "name": "limit",
+                        "type": "number",
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "name": "skip",
+                        "type": "number",
+                        "in": "query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successfull operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": ["User"],
+                "summary": "Find one user",
+                "description": "",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "type": "string",
+                    "description": "User Id",
+                    "required": true
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid tag value"
+                    }
+                }
+            },
+            "patch": {
+                "tags": ["User"],
+                "summary": "Update one user",
+                "description": "",
+                "produces": ["application/json"],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "description": "User Id",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization token with admin role",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid tag value"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["User"],
+                "summary": "Delete one user",
+                "description": "",
+                "produces": ["application/json"],
+                "parameters": [{
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "description": "User Id",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization token with admin role",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid tag value"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

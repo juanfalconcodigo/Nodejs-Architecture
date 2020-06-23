@@ -19,8 +19,8 @@ class IdeaController {
     }
 
     async create(req, res) {
-        const { boby } = req;
-        const createdIdea = await _ideaService.create(boby);
+        const { body } = req;
+        const createdIdea = await _ideaService.create(body);
         return res.status(201).send(createdIdea);
     }
 
