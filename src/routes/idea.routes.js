@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { ParseIntMiddleware } = require('../middlewares');
+const { ParseIntMiddleware, AuthMiddleware } = require('../middlewares');
 
 module.exports = function({ IdeaController }) {
     const router = Router();
@@ -7,10 +7,10 @@ module.exports = function({ IdeaController }) {
     router.route("/:ideaId").get(IdeaController.get);
     router.route("/:userId/all").get(IdeaController.getUserIdeas);
     router.route("/").post(IdeaController.create);
-    router.route("/:ideaId").patch(IdeaController.update);
-    router.route("/:ideaId").delete(IdeaController.delete);
-    router.route("/:ideaId/upvote").post(IdeaController.upvoteIdea);
-    router.route("/:ideaId/downvote").post(IdeaController.downvoteIdea);
+    router.route("/:ideaId").patch(AuthMiddleware, IdeaController.update);
+    router.route("/:ideaId").delete(AuthMiddleware, IdeaController.delete);
+    router.route("/:ideaId/upvote").post(AuthMiddleware, IdeaController.upvoteIdea);
+    router.route("/:ideaId/downvote").post(AuthMiddleware, IdeaController.downvoteIdea);
 
     return router;
 }
