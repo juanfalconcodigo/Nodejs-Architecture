@@ -1,0 +1,21 @@
+version: "3"
+
+
+services:
+    api:
+        build: .
+        depends_on:
+            - mongo
+        environment: 
+            - PORT=5000
+            - MONGO_URI=mongodb://mongo:27017/IdeaTest
+            - APPLICATION_NAME=IdeaApp
+            - JWT_SECRET=JWT_SECRET
+            - EXPIRES_IN=1h
+            - CACHE_KEY=CACHE_KEY
+            - SWAGGER_DOC=swaggerPROD
+        ports: 
+            - "5000:5000"
+    
+    mongo:
+        image: mongo
